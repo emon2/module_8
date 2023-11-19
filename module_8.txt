@@ -1,0 +1,47 @@
+// Route File:
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ProfileController; 
+
+Route::get('/profile/{id}', [ProfileController::class, 'index']);
+
+
+// Controller File:
+
+<?php
+
+namespace App\Http\Controllers;
+
+class ProfileController extends Controller
+
+{
+
+public function index($id){ 
+
+  $name = “Donal Trump”;
+
+  $age = “75”;
+
+  $data = [
+      'id' => $id,
+      'name' => $name,
+      'age' => $age
+   ];
+
+$name = 'ostad_cookie';
+$value = 'ostad_value';
+$minutes = 1;
+$path = '/';
+$domain = $_SERVER['SERVER_NAME'];
+$secure = false;
+$httpOnly = true;
+
+return response()->json($data, 200)->cookie($name, $value, $minutes, $path, $domain, $secure, $httpOnly);
+
+}
+
+}
+
